@@ -60,3 +60,49 @@ class PersonaDos{
 const P2 = new PersonaDos("Maria", 1990, 2026);
 P2.mostrarEdad()
 P2.ValidaEdad();
+
+
+//ejercicio dos
+
+class Venta{
+    public producto : string;
+    public cantidad : number;
+    public precio : number;
+    public iva : number;
+
+
+
+    constructor(producto:string, cantidad: number, precio : number,iva : number){
+        this.producto = producto;
+        this.cantidad = cantidad;
+        this.precio = precio;
+        this.iva = iva;
+    }
+
+    public TotalVenta(): number{
+        return this.cantidad * this.precio;
+    }
+
+    public AplicarIva(iva: number): number{
+        return this.TotalVenta() * iva;
+    }
+
+    public VentaConIva(descuento: number): number{
+        return this.TotalVenta() + this.AplicarIva(this.iva) - descuento;
+    }
+
+
+
+
+    public DatosVenta(): void{
+        console.log("Producto: " + this.producto);
+        console.log("Cantidad: " + this.cantidad);
+        console.log("Precio: " + this.precio);
+        console.log("IVA: " + this.iva);
+        console.log("Total de la venta: " + this.TotalVenta());
+        console.log("IVA aplicado: " + this.AplicarIva(this.iva));
+        console.log("Total con IVA y descuento: " + this.VentaConIva(10));
+    }
+}
+const V1 = new Venta("Camisa", 1, 100, 0.13);
+V1.DatosVenta();
